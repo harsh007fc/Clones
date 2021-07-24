@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import { connect } from 'react-redux'
-import { buyBat } from './BatsAction'
+import { buyBat,sellBat } from './BatsAction'
 
 
 function BatContainer(props) {
@@ -10,7 +10,10 @@ function BatContainer(props) {
         <>
             <h2>No of bats= {props.numOfBats}</h2>
             <input value={number} onChange={e=>setNumber(e.target.value)} type='number' />
+            <br />
             <button onClick={()=>{props.buyBat(number)}}>Buy {number} Bat</button>
+            <br />
+            <button onClick={()=>{props.sellBat(number)}}>Sell {number} Bat</button>
         </>
     )
 }
@@ -25,7 +28,8 @@ return {
 
 let mapDispatchToProps = (dispatch) => {
     return {
-        buyBat:(number)=>dispatch(buyBat(number))
+        buyBat:(number)=>dispatch(buyBat(number)),
+        sellBat:(number)=>dispatch(sellBat(number))
     }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(BatContainer)
