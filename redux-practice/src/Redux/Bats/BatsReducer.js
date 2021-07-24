@@ -17,3 +17,6 @@ let BatReducer = (state = initialState,action) => {
 }
 
 export default BatReducer;
+
+
+///reducer is a pure fucntion
