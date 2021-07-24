@@ -14,9 +14,9 @@ function BallsContainer(props) {
 
 //first method for reading from global state
 
-const mapStateToProps = (state)=>{
+const mapStateToProps = (state)=>{ 
     return {
-        numOfBalls:state.numOfBalls
+        numOfBalls:state.ball.numOfBalls
     }
 }
 
