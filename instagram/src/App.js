@@ -1,17 +1,17 @@
 import Post from './Components/Post';
 import './App.css';
-import React,{useState} from 'react';
-
+import React,{useState,useEffect} from 'react';
+import { db } from './Fireabase/Firebase';
 function App() {
 
-  let [posts,setPosts] = useState([
-    { username:'Harsh',
-     caption:'this is a caption',
-     imageUrl:'https://mumbaimirror.indiatimes.com/photo/76922257.cms'},
-    { username:'Shivam',
-     caption:'I create Dope Shit' ,
-     imageUrl:'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTgA0iOH9Rh9SX1hkqHYqKu4t6iHwvnbFsOVZCUuec6lQQRpzxd'}
-  ]);
+  let [posts,setPosts] = useState([]);
+
+
+  useEffect(()=> {
+    db.collection('posts').onSnapshot((snapshot)=> {
+      setPosts(snapshot.docs.map((doc)=> doc.data()));
+    })
+  },[])
   return (
     <div className="app">
      <div className="app__header">
