@@ -40,6 +40,7 @@ function App() {
   let [email,setEmail] = useState('');
   let [password,setPassword] = useState('');
   let [user,setUser] = useState(null);
+  let [openSignIn,setOpenSignIn] = useState(false);
 
 
   useEffect(()=>{
@@ -84,10 +85,29 @@ function App() {
        displayName:username
     })})
     .catch((error)=>alert(error.message));
+    setEmail('');
+    setUsername('');
+    setPassword('');
+    setOpen(false);
   }
+
+  let signIn = (e) => {
+    e.preventDefault();
+    auth.signInWithEmailAndPassword(email,password)
+    .catch((error)=>alert(error.message));
+    setEmail('');
+    setPassword('');
+    setOpenSignIn(false);
+  }
+
+
+
+
+
   
   return (
     <div className="app">
+      {/* first modal */}
       <Modal
         open={open}
         onClose={()=>{setOpen(false)}}
@@ -103,11 +123,31 @@ function App() {
 
         <Input placeholder='Password' type='Password' value={password} onChange={(e)=> setPassword(e.target.value)} />
 
-        <Button type='submit' onClick={signUp}>Sign-Up</Button>
+        <Button type='submit' onClick={signUp}>Sign Up</Button>
         </form>
     </div>
       </Modal>
 
+      {/* Second Modal */}
+
+      <Modal
+        open={openSignIn}
+        onClose={()=>{setOpenSignIn(false)}}
+      >
+        <div style={modalStyle} className={classes.paper}>
+          <form className='app__signup'>
+      <center>
+        <img className='app__headerImage' src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/150px-Instagram_logo.svg.png" alt="" />
+        </center>
+        
+        <Input placeholder='email' type='email' value={email} onChange={(e)=> setEmail(e.target.value)} />
+
+        <Input placeholder='Password' type='Password' value={password} onChange={(e)=> setPassword(e.target.value)} />
+
+        <Button type='submit' onClick={signIn}>Sign In</Button>
+        </form>
+    </div>
+      </Modal>
 
     
 
@@ -115,8 +155,16 @@ function App() {
        <img className='app__headerImage' src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/150px-Instagram_logo.svg.png" alt="" />
      </div>
 
+     {
+       user ? (<Button onClick={()=>auth.signOut()}>Log Out</Button>) : 
+       (
+         <div className="app__loginContainer">
+           <Button onClick={()=>setOpenSignIn(true)}>Sign In</Button>
+           <Button onClick={()=>setOpen(true)}>Sign Up</Button>
+
+         </div>
+         )}
      
-     <Button onClick={()=>setOpen(true)}>Sign Up</Button>
 
      {
        posts.map(({id,post})=> (
