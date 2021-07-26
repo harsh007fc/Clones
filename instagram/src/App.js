@@ -1,7 +1,7 @@
 import Post from './Components/Post';
 import './App.css';
 import React,{useState,useEffect} from 'react';
-import { db } from './Fireabase/Firebase';
+import { auth, db } from './Fireabase/Firebase';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import { Button,Input } from '@material-ui/core';
@@ -39,6 +39,33 @@ function App() {
   let [username,setUsername] = useState('');
   let [email,setEmail] = useState('');
   let [password,setPassword] = useState('');
+  let [user,setUser] = useState(null);
+
+
+  useEffect(()=>{
+    let unsubscribe = auth.onAuthStateChanged((authUser)=>{
+      if(authUser){ //user has logged in
+        console.log(authUser);
+        setUser(authUser);
+
+        // if(authUser.displayName){
+
+        // }
+        // else{
+        //   return authUser.updateProfile({
+        //     displayName:username,
+        //   })
+        // }
+      }
+      else{ //user has logged out
+        setUser(null);
+      }
+    })
+
+    return ()=> {
+      unsubscribe();
+    }
+  },[user,username])
 
 
   useEffect(()=> {
@@ -52,6 +79,11 @@ function App() {
 
   let signUp = (e) => {
     e.preventDefault();
+    auth.createUserWithEmailAndPassword(email,password)
+    .then((authUser)=>{ return authUser.user.updateProfile({
+       displayName:username
+    })})
+    .catch((error)=>alert(error.message));
   }
   
   return (
