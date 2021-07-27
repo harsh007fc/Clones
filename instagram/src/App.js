@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import { Button, Input } from '@material-ui/core';
 import ImageUpload from './Components/ImageUpload';
+import InstagramEmbed from 'react-instagram-embed';
 
 
 function getModalStyle() {
@@ -49,15 +50,6 @@ function App() {
       if (authUser) { //user has logged in
         console.log(authUser);
         setUser(authUser);
-
-        // if(authUser.displayName){
-
-        // }
-        // else{
-        //   return authUser.updateProfile({
-        //     displayName:username,
-        //   })
-        // }
       }
       else { //user has logged out
         setUser(null);
@@ -174,14 +166,26 @@ function App() {
 
       </div>
 
-      
-
-
+      <div className="app__posts">
       {
         posts.map(({ id, post }) => (
           <Post key={id} username={post.username} caption={post.caption} imageUrl={post.imageUrl} />
         ))
       }
+      </div>
+      {/* <InstagramEmbed
+        url='https://instagr.am/p/Zw9o4/'
+        clientAccessToken='123|456'
+        maxWidth={320}
+        hideCaption={false}
+        containerTagName='div'
+        protocol=''
+        injectScript
+        onLoading={() => { }}
+        onSuccess={() => { }}
+        onAfterRender={() => { }}
+        onFailure={() => { }}
+      /> */}
 
       {user?.displayName ? (<ImageUpload username={user.displayName} />) : (<h3>Sorry Need To Login</h3>
       )}
