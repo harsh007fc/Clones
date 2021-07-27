@@ -5,6 +5,7 @@ import { auth, db } from './Fireabase/Firebase';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import { Button,Input } from '@material-ui/core';
+import ImageUpload from './Components/ImageUpload';
 
 
 function getModalStyle() {
@@ -107,7 +108,8 @@ function App() {
   
   return (
     <div className="app">
-      {/* first modal */}
+
+      <ImageUpload/>
       <Modal
         open={open}
         onClose={()=>{setOpen(false)}}
