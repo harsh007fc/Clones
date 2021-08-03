@@ -5,7 +5,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
+  <DataLayer initialState reducer>
     <App />,
+    </DataLayer>
   document.getElementById('root')
 );
 
