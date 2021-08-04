@@ -9,12 +9,12 @@ const reducer = (state,action) => {
     console.log(action);
 
     switch (action.type) {
-        case value:
-            
-            break;
-    
+        case 'SET_USER':
+            return{
+                ...state,user:action.user
+            }
         default:
-            break;
+            return  state;
     }
 }
 
