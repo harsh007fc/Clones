@@ -20,6 +20,13 @@
     display: flex;
     flex: 1;
 }
+.header__optionLineOne{
+    font-size: 10px;
+}
+.header__optionLineTwo{
+    font-size: 13px;
+    font-weight:800;
+}
 
 .header__searchInput{
     height: 12px;
@@ -32,18 +39,12 @@
     height: 22px !important;
     background-color: #cd9042;
 }
-
-.header__nav{
+.header__optionbasket{
     display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
     justify-content: space-evenly;
-}
-
-.header__optionLineOne{
-    font-size: 10px;
-}
-.header__optionLineTwo{
-    font-size: 13px;
-    font-weight:800;
+    align-content: center;
 }
 
 .header__option{
@@ -57,13 +58,16 @@
     color: white;
     text-decoration: none;
 }
-.header__optionbasket{
-    
-    display: flex;
-    align-items: center; 
-}
 
 .header__basketCount{
     margin-left: 10px;
     margin-right: 10px;
 }
+
+.header__nav{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
+
