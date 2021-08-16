@@ -13,4 +13,6 @@ export const StateProvider = ({reducer,initialState,children}) => (
     </StateContext.Provider>
 );
 
+
+//custom hook  bn gya yeh jo ki humein basket aur user ka access provide keta hai ok
 export const useStateValue = () => useContext(StateContext);
