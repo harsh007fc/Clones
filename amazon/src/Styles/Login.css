@@ -23,6 +23,7 @@
     margin-bottom: 5px;
 }
 .login__container > form > input{
+    height: 25px;
     margin-top: 20px;
     margin-bottom: 20px;
     background-color: white;
