@@ -3,7 +3,7 @@ import { buyBall } from './BallsAction';
 import {connect} from 'react-redux'
 
 function BallsContainer(props) {
-    console.log(props.numOfBalls);
+    console.log(props);
     return (
         <div>
             <h2>Number of Balls = {props.numOfBalls} </h2>

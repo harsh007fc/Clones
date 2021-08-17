@@ -8,9 +8,9 @@ function App() {
   return (
     <Provider store={store}>
       <div className='App'>
-        {/* <BallsContainer/>
-        <BatContainer/> */}
-        <UserContainer/>
+        <BallsContainer/>
+        <BatContainer/>
+        {/* <UserContainer/> */}
       </div>
     </Provider>
   );
