@@ -1,14 +1,17 @@
 import React from 'react'
 import styled from 'styled-components';
-// import logo from './images/cta-logo-one.png'
+import logo from './images/cta-logo-one.svg'
+import logo2 from './images/cta-logo-two.png'
 
 function Login(props) {
     return (
         <Container>
             <Content>
                 <CTA>
-                    <CTALogoOne src='https://media.discordapp.net/attachments/874550751605710898/877238660171448382/cta-logo-one.png'></CTALogoOne>
-
+                    <CTALogoOne src={logo}></CTALogoOne>
+                     <SignUp>Get It All There</SignUp>
+                     <Description>Get Premier Access to Raya and the last Dragon for an additional fee with a disney+ subscription.As of 03/26/21,the price of Disney+ and The Disney Bundle will increase by $1.</Description>
+                     <CTALogoTwo src={logo2}></CTALogoTwo>
                 </CTA>
                 <BgImage/>
 
@@ -17,8 +20,45 @@ function Login(props) {
     )
 }
 
-const CTA = styled.div` 
+const CTALogoTwo = styled.img`
+  max-width:600px; 
+  margin-bottom:20px;
+  display:inline-block;
+  vertical-align:bottom;
+  width:100%;
+ `;
+
+const Description = styled.p`
+  text-align:center
+  color:hsla(0,0%,95.3%,1); 
+  font-size:12px;
+  margin:0 0 24px;
+  line-height:1.5;
+  letter-spacing:1.5px;
 `;
+const SignUp = styled.a`
+    font-weight:bold;
+    color:#f9f9f9;
+    background-color:#0063e5;
+    margin-bottom:12px;
+    width:100%;
+    letter-spacing:1.5px;
+    font-size:18px;
+    padding:16.5px 0;
+    border:1px solid transparent;
+    border-radius:4px;
+    &:hover{
+        background-color:#0483ee;
+        cursor:pointer;
+    }
+`;
+
+const CTA = styled.div` 
+  max-width:650px;
+  width:100%;
+  display:flex;
+  flex-direction:column;
+ `;
 const CTALogoOne = styled.img` 
    margin-bottom:12px;
    max-width:600px;
